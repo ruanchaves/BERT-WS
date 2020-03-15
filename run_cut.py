@@ -509,6 +509,8 @@ def main():
     record['application'] = 'wikipedia_' + ''.join([x for x in str(datetime.now()) if x.isdigit() ])
     record['category'] = 'start'
     record['data'] = 'Starting application.'
+    print(record)
+    print(os.environ['DATABASE'])
     logger.add(record)
 
     tf.logging.set_verbosity(tf.logging.INFO)
