@@ -3,6 +3,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")"
 CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES
 PEOPLEcut="./PEOPLEdata"
 BERT_CHINESE_DIR="chinese_L-12_H-768_A-12"
+DATABASE=$DATABASE
 
 DOCKER_MAJOR_VERSION_STRING=$(docker -v | grep -oP '([0-9]+)' | sed -n 1p)
 DOCKER_MINOR_VERSION_STRING=$(docker -v | grep -oP '([0-9]+)' | sed -n 2p)
@@ -39,6 +40,7 @@ if [[ -n $ps_test ]] && [[ $recent_version -eq 1 ]]; then
         --env PEOPLEcut=$PEOPLEcut \
         --env BERT_CHINESE_DIR=$BERT_CHINESE_DIR \
         --env CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES \
+        --env DATABASE=$DATABASE \
         -it --rm ruanchaves/bert:1.0 bash /home/entrypoint.sh
 elif [[ -n $ps_test ]] && [[ $recent_version -eq 0 ]]; then
     nvidia-docker run \
@@ -46,6 +48,7 @@ elif [[ -n $ps_test ]] && [[ $recent_version -eq 0 ]]; then
         --env PEOPLEcut=$PEOPLEcut \
         --env BERT_CHINESE_DIR=$BERT_CHINESE_DIR \
         --env CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES \
+        --env DATABASE=$DATABASE \
         -it --rm ruanchaves/bert:1.0 bash /home/entrypoint.sh
 elif [[ -z $ps_test ]] && [[ $recent_version -eq 1 ]]; then
     sudo -E docker run --gpus all \
@@ -53,6 +56,7 @@ elif [[ -z $ps_test ]] && [[ $recent_version -eq 1 ]]; then
         --env PEOPLEcut=$PEOPLEcut \
         --env BERT_CHINESE_DIR=$BERT_CHINESE_DIR \
         --env CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES \
+        --env DATABASE=$DATABASE \
         -it --rm ruanchaves/bert:1.0 bash /home/entrypoint.sh
 elif [[ -z $ps_test ]] && [[ $recent_version -eq 0 ]]; then
     sudo -E nvidia-docker run \
@@ -60,6 +64,7 @@ elif [[ -z $ps_test ]] && [[ $recent_version -eq 0 ]]; then
         --env PEOPLEcut=$PEOPLEcut \
         --env BERT_CHINESE_DIR=$BERT_CHINESE_DIR \
         --env CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES \
+        --env DATABASE=$DATABASE \
         -it --rm ruanchaves/bert:1.0 bash /home/entrypoint.sh
 else
     echo "Not found."

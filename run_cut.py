@@ -8,7 +8,7 @@ BASED ON Google_BERT.
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
-
+from datetime import datetime
 import collections
 import os
 import modeling
@@ -17,6 +17,9 @@ import tokenization
 import tensorflow as tf
 import pickle
 from evaluation import SegmenterEvaluation
+from database import Record, Logger
+
+logger = Logger()
 
 flags = tf.flags
 
@@ -234,26 +237,26 @@ def write_tokens(tokens, mode):
         wf.write(lines + '\n')
         wf.close()
 
-def output_seg_result(output_dir, ori_labels, des_labels):
+def output_seg_result(output_dir, ori_labels, des_labels, record):
+    record['category'] = 'results'
     token_file_path = os.sep.join([output_dir, "token_test.txt"])
     with open(token_file_path, "r", encoding="utf-8") as f:
         tokens = [each.strip() for each in f.readlines()]
     lenth = len(tokens)
     assert len(ori_labels) == lenth
     assert len(des_labels) == lenth
-    seg_result_file = os.path.join(output_dir, "seg_result.txt")
-    writer = open(seg_result_file, "w", encoding="utf-8")
+    # seg_result_file = os.path.join(output_dir, "seg_result.txt")
+    # writer = open(seg_result_file, "w", encoding="utf-8")
     for i in range(lenth):
         token = tokens[i]
         ori_label = ori_labels[i]
         des_label = des_labels[i]
         ori_seg = " ".join([token[each[0]:each[1]] for each in ori_label])
         des_seg = " ".join([token[each[0]:each[1]] for each in des_label])
-        writer.write(token + "\n")
-        writer.write(ori_seg + "\n")
-        writer.write(des_seg + "\n")
-        writer.write("\n")
-    writer.close()
+        info = str(i) + '\n' + token + '\n' + ori_seg + '\n' + des_seg + '\n'
+        record['data'] = info
+        logger.add(record)
+    # writer.close()
 
 def convert_single_example(ex_index, example, label_list, max_seq_length, tokenizer,mode):
     label_map = {}
@@ -500,7 +503,14 @@ def model_fn_builder(bert_config, num_labels, init_checkpoint, learning_rate,
     return model_fn
 
 
-def main(_):
+def main():
+
+    record = {}
+    record['application'] = 'wikipedia_' + ''.join([x for x in str(datetime.now()) if x.isdigit() ])
+    record['category'] = 'start'
+    record['data'] = 'Starting application.'
+    logger.add(record)
+
     tf.logging.set_verbosity(tf.logging.INFO)
     processors = {
         "people": CutProcessor
@@ -576,10 +586,19 @@ def main(_):
         train_file = os.path.join(FLAGS.output_dir, "train.tf_record")
         filed_based_convert_examples_to_features(
             train_examples, label_list, FLAGS.max_seq_length, tokenizer, train_file)
-        tf.logging.info("***** Running training *****")
-        tf.logging.info("  Num examples = %d", len(train_examples))
-        tf.logging.info("  Batch size = %d", FLAGS.train_batch_size)
-        tf.logging.info("  Num steps = %d", num_train_steps)
+
+
+
+        record['category'] = 'training'
+        record['data'] = "Num examples = {0}".format(len(train_examples))
+        logger.add(record)
+
+        record['data'] = "Batch size = {0}".format(FLAGS.train_batch_size)
+        logger.add(record)
+
+        record['data'] = "Num steps = {0}".format(num_train_steps)
+        logger.add(record)
+
         train_input_fn = file_based_input_fn_builder(
             input_file=train_file,
             seq_length=FLAGS.max_seq_length,
@@ -601,9 +620,14 @@ def main(_):
                                                  FLAGS.max_seq_length, tokenizer,
                                                  predict_file, mode="test")
 
-        tf.logging.info("***** Running prediction*****")
-        tf.logging.info("  Num examples = %d", len(predict_examples))
-        tf.logging.info("  Batch size = %d", FLAGS.predict_batch_size)
+        record['category'] = 'prediction'
+        record['data'] = "Num examples = {0}".format(len(predict_examples))
+        logger.add(record)
+
+        record['data'] = "Batch size = {0}".format(FLAGS.predict_batch_size)
+        logger.add(record)
+        
+
         if FLAGS.use_tpu:
             # Warning: According to tpu_estimator.py Prediction on TPU is an
             # experimental feature and hence not supported here
@@ -637,14 +661,24 @@ def main(_):
             des_labels.append(predict)
             count += 1
 
-        tf.logging.info("***** Eval results *****")
-        tf.logging.info("  count = %s", str(count))
-        tf.logging.info("  precision_avg = %s", str(precision_avg))
-        tf.logging.info("  recall_avg = %s", str(recall_avg))
-        tf.logging.info("  f1_avg = %s", str(f1_avg))
-        tf.logging.info("  error_avg = %s", str(error_avg))
+        record['category'] = 'eval results'
 
-        output_seg_result(FLAGS.output_dir, ori_labels, des_labels)
+        record['data'] = 'count = {0}'.format(str(count))
+        logger.add(record)
+
+        record['data'] = 'precision_avg = {0}'.format(str(precision_avg))
+        logger.add(record)
+
+        record['data'] = 'recall_avg = {0}'.format(str(recall_avg))
+        logger.add(record)
+
+        record['data'] = 'f1_avg = {0}'.format(str(f1_avg))
+        logger.add(record)
+
+        record['data'] = 'error_avg = {0}'.format(str(error_avg))
+        logger.add(record)
+
+        output_seg_result(FLAGS.output_dir, ori_labels, des_labels, record)
 
 
 if __name__ == "__main__":
