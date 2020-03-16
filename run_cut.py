@@ -542,7 +542,8 @@ def model_fn_builder(bert_config, num_labels, init_checkpoint, learning_rate,
     return model_fn
 
 
-def main(argv):
+
+def main(_):
 
     record = {}
     record['category'] = 'start'
