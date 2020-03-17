@@ -12,7 +12,7 @@ def process_table(df):
         df['sentence'].astype(str), tag_sentences)
     return df[['assembled_sentence', 'labels']]
 
-def parallelize_dataframe(df, func, n_cores=16):
+def parallelize_dataframe(df, func, n_cores=1):
     df_split = np.array_split(df, n_cores)
     pool = Pool(n_cores)
     df = pd.concat(pool.map(func, df_split))
@@ -41,7 +41,10 @@ def tag_sentences(joined_sentence, sentence):
     pair.joined_sentence.build()
     pair.sentence.build()
     pair.tag_pair()
-    return pair.joined_sentence.get_labels()
+    labels = pair.joined_sentence.get_labels()
+    assert(len(joined_sentence) == len(labels))
+    assert('.' not in labels)
+    return labels
 
 class Character(object):
 
@@ -61,14 +64,14 @@ class Sentence(object):
     def __init__(self, string):
         self.string = string
         self.forbidden_pos = []
-        self.labels = ['' for x in range(len(string)) ]
+        self.labels = ['.' for x in range(len(string)) ]
         self.pointer = 0
         self.chars = []
 
     def set_forbidden_pos(self, pos):
         self.forbidden_pos = pos
         for item in pos:
-            self.labels[item] = 'X'
+            self.labels[item] = 'r'
 
     def set_label(self, idx, label):
         self.labels[idx] = label
@@ -91,7 +94,7 @@ class Sentence(object):
             return character_object
 
     def reset(self):
-        self.labels = len(self.string) * '.'
+        self.labels = ['.' for x in range(len(string)) ]
         self.pointer = 0
         self.chars = []
 
@@ -110,22 +113,35 @@ class Pair(object):
         self.joined_sentence = Sentence(joined_sentence)
         self.sentence = Sentence(sentence)
 
-        joined_sentence_no_space = joined_sentence.replace(" ", "")
-        sentence_no_space = sentence.replace(" ", "")
-        i = 0 
-        j = 0
+        joined_sentence_no_space = Sentence(joined_sentence.replace(" ", ""))
+        sentence_no_space = Sentence(sentence.replace(" ", ""))
+
+        joined_sentence_no_space.build()
+        sentence_no_space.build()
+
+        joined_sentence_no_space_pos = 0 
+        sentence_no_space_pos = 0
         diff = []
         
         while True:
-            try:
-                if joined_sentence_no_space[i] == sentence_no_space[j]:
-                    i += 1
-                    j += 1
-                else:
-                    diff.append(i)
-                    i += 1
-            except:
+
+            joined_sentence_no_space_char_window = get_array_window(joined_sentence_no_space.chars, joined_sentence_no_space_pos)
+            sentence_no_space_char_window = get_array_window(sentence_no_space.chars, sentence_no_space_pos)
+
+            if not joined_sentence_no_space_char_window.current and not sentence_no_space_char_window.current:
                 break
+            elif joined_sentence_no_space_char_window.current and not sentence_no_space_char_window.current:
+                diff.append(joined_sentence_no_space_char_window.current.idx)
+                break
+            elif not joined_sentence_no_space_char_window.current and sentence_no_space_char_window.current:
+                raise Exception()
+            elif joined_sentence_no_space_char_window.current and sentence_no_space_char_window.current:
+                if joined_sentence_no_space_char_window.current.char == sentence_no_space_char_window.current.char:
+                    joined_sentence_no_space_pos += 1
+                    sentence_no_space_pos += 1
+                else:
+                    diff.append(joined_sentence_no_space_char_window.current.idx)
+                    joined_sentence_no_space_pos += 1
         
         counter = 0
         pos = []
@@ -192,9 +208,9 @@ class Pair(object):
 
 if __name__ == '__main__':
     filenames = {
-        'train': './oracle/loyola_train.csv',
-        'test': './oracle/loyola_test.csv',
-        'dev': './oracle/loyola_dev.csv'
+        'train': './corpus/train_ptwiki_2019_11_26.csv',
+        'test': './corpus/test_ptwiki_2019_11_26.csv',
+        'dev': './corpus/dev_ptwiki_2019_11_26.csv'
     }
 
     for key in filenames.keys():

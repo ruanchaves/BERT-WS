@@ -213,7 +213,7 @@ class CutProcessor(DataProcessor):
             self._read_data(os.path.join(data_dir, "test.txt")), "test")
 
     def get_labels(self):
-        return ["s", "b", "m", "e", "X", "[CLS]", "[SEP]"]
+        return ["b", "m", "e", "r", "s", "X", "[CLS]", "[SEP]"]
 
     def _create_example(self, lines, set_type):
         examples = []
