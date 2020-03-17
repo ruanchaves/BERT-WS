@@ -1,0 +1,533 @@
+,n_gram_size,assembled_sentence,sentence
+0,1,aichtag,aichtag
+1,1,FHBLK,FHBLK
+2,3,InitFuncPtrs,Init Func Ptrs
+3,2,USE_GENERIC,USE GENERIC
+4,2,clipWidget,clip Widget
+5,3,DND_DispatchEvent,DND Dispatch Event
+6,3,OyoahaEditCell,Oyoaha Edit Cell
+7,6,net.sf.plazma.rcp.swt.forms,net sf plazma rcp swt forms
+8,2,perform_worklist,perform worklist
+9,2,PMatrixRenderer,PMatrix Renderer
+10,2,UninstallConduit,Uninstall Conduit
+11,2,defender.att,defender att
+12,6,uk.co.mullsoft.jean.dag.attributes,uk co mullsoft jean dag attributes
+13,3,exp.tm_hour,exp tm hour
+14,1,OBSBuffer,OBSBuffer
+15,4,DataCollectionConfigFactory,Data Collection Config Factory
+16,2,set_globprec,set globprec
+17,1,LOOKUPEND,LOOKUPEND
+18,2,blindCopy,blind Copy
+19,1,karg,karg
+20,2,HAVE_MMXEXT,HAVE MMXEXT
+21,3,mPICSTreeRatings,m PICSTree Ratings
+22,2,endXMLDocument,end XMLDocument
+23,5,ui_key_eventPos.x,ui key event Pos x
+24,3,aMoreEncodings,a More Encodings
+25,4,fThreadSendMgr,f Thread Send Mgr
+26,5,isTrueLeftFourgramPresent,is True Left Fourgram Present
+27,2,PATTERN_CHANGESET,PATTERN CHANGESET
+28,2,timeoutIn,timeout In
+29,3,tmpDBKey.data,tmp DBKey data
+30,3,clearInputLine,clear Input Line
+31,2,trivNew,triv New
+32,5,ServerConf.SENSE_BODY_STEP,Server Conf SENSE BODY STEP
+33,2,vert_right,vert right
+34,3,AEGetParamDesc,AEGet Param Desc
+35,2,uHeaders,u Headers
+36,3,st_wc_mbytes,st wc mbytes
+37,2,resizerHeight,resizer Height
+38,2,ingredient_check,ingredient check
+39,3,opt_search_plan,opt search plan
+40,5,nsIconProtocolHandlerConstructor,ns Icon Protocol Handler Constructor
+41,1,csvp,csvp
+42,3,nsDequeFunctor,ns Deque Functor
+43,5,XP_PlatformFileToURL,XP Platform File To URL
+44,3,LDAP_SIZELIMIT_EXCEEDED,LDAP SIZELIMIT EXCEEDED
+45,4,IDS_IMP_ERR_IO,IDS IMP ERR IO
+46,1,elevres,elevres
+47,5,wav_w64_format_str,wav w 64 format str
+48,2,followup_delta,followup delta
+49,3,bpFirstBase,bp First Base
+50,2,coordpnt.y,coordpnt y
+51,4,getNativeUnicodeStream,get Native Unicode Stream
+52,6,NSS_CMSSignedData_Decode_AfterData,NSS CMSSigned Data Decode After Data
+53,2,stream.opaque,stream opaque
+54,3,definedRegionType,defined Region Type
+55,3,MaskDict.Height,Mask Dict Height
+56,2,MIME_URL,MIME URL
+57,5,mem_field_header_get_len,mem field header get len
+58,3,Row2Ptr,Row 2 Ptr
+59,5,integrity.interfaces.ClientServerCommunication,integrity interfaces Client Server Communication
+60,6,ph.m_old_prepare_page_reference,ph m old prepare page reference
+61,2,HRTIMER_LIB,HRTIMER LIB
+62,2,DDX_CBIndex,DDX CBIndex
+63,2,inchesStr,inches Str
+64,7,com.oy.shared.lw.snmp.IValueSource,com oy shared lw snmp IValue Source
+65,3,prevRowFrame,prev Row Frame
+66,1,ALLOC,ALLOC
+67,3,rightRect.height,right Rect height
+68,2,dtor.token,dtor token
+69,5,PepsynConstants.SAMPLE_NAME_PARM,Pepsyn Constants SAMPLE NAME PARM
+70,1,XIMHighlight,XIMHighlight
+71,3,Gaussian03Format,Gaussian 03 Format
+72,5,IMAGE_NT_OPTIONAL_HDR_MAGIC,IMAGE NT OPTIONAL HDR MAGIC
+73,2,ER_LTP,ER LTP
+74,3,SetMaxUpload,Set Max Upload
+75,3,applyFormChanges,apply Form Changes
+76,2,numTables,num Tables
+77,2,appSchemas,app Schemas
+78,2,descAttr,desc Attr
+79,3,SIGNATURE_VERIFIER_CONTRACTID,SIGNATURE VERIFIER CONTRACTID
+80,2,accParent,acc Parent
+81,1,zsub,zsub
+82,1,LPHANDLE,LPHANDLE
+83,4,ReadUtf8Z,Read Utf 8 Z
+84,3,GetDistList,Get Dist List
+85,3,nsMenuX,ns Menu X
+86,4,remInvMuL,rem Inv Mu L
+87,2,RELOP_LT,RELOP LT
+88,3,nextTakeOverptr,next Take Overptr
+89,4,DidBeginBatchNotify,Did Begin Batch Notify
+90,3,HAVE_ENDIAN_H,HAVE ENDIAN H
+91,5,nsPluginDocReframeEvent,ns Plugin Doc Reframe Event
+92,3,clearDependentData,clear Dependent Data
+93,8,jmt.framework.gui.table.editors.ButtonCellEditor,jmt framework gui table editors Button Cell Editor
+94,3,SecurityResources.NAMESPACE,Security Resources NAMESPACE
+95,3,IDS_CMT_AIDE,IDS CMT AIDE
+96,3,aStateId,a State Id
+97,5,sendFortezzaClientKeyExchange,send Fortezza Client Key Exchange
+98,3,ps.com_col,ps com col
+99,5,SchemeParser.TkUnquoteSplicing,Scheme Parser Tk Unquote Splicing
+100,5,OO7_ComplexAssemblyImpl,OO 7 Complex Assembly Impl
+101,8,com.l2fprod.gui.nativeskin.x11,com l 2 fprod gui nativeskin x 11
+102,2,szDrv,sz Drv
+103,3,MAX_INFO_VALUE,MAX INFO VALUE
+104,1,nargv,nargv
+105,2,szLeft,sz Left
+106,2,aReadere,a Readere
+107,3,PRINTER_ENUM_LOCAL,PRINTER ENUM LOCAL
+108,2,mng_pchar,mng pchar
+109,2,ase.buffer,ase buffer
+110,2,sorButton,sor Button
+111,6,Java_yager_utils_GL_glLightfv,Java yager utils GL gl Lightfv
+112,2,formatPos,format Pos
+113,3,sOnpaint_id,s Onpaint id
+114,3,getBaselineDuration,get Baseline Duration
+115,2,alertBiz,alert Biz
+116,2,lum_mean,lum mean
+117,2,innerEnum,inner Enum
+118,7,FillKeyValueSecNameKeyID,Fill Key Value Sec Name Key ID
+119,3,get_mgmd_nodeid,get mgmd nodeid
+120,5,kCImapHostSessionList,k CImap Host Session List
+121,2,PDB_COUNT,PDB COUNT
+122,1,defarcangpnt,defarcangpnt
+123,4,com.ibm.richtext.print,com ibm richtext print
+124,3,queryEncodingStr,query Encoding Str
+125,5,jcbDocumentTypeActionPerformed,jcb Document Type Action Performed
+126,3,GdkEventScroll,Gdk Event Scroll
+127,1,outend,outend
+128,3,INIT_DEBUG_PROPERTIES,INIT DEBUG PROPERTIES
+129,3,num_hi_sig,num hi sig
+130,4,CallNPN_PostURLProc,Call NPN Post URLProc
+131,5,thunk_IClassFactory_CreateInstance,thunk IClass Factory Create Instance
+132,4,BOTLIB_PC_LOAD_SOURCE,BOTLIB PC LOAD SOURCE
+133,3,PROPS_FILE_DEF,PROPS FILE DEF
+134,4,SITE_NAME_RHO_RB,SITE NAME RHO RB
+135,3,N_DECL_ALLY,N DECL ALLY
+136,5,PyDict_GetItemString,Py Dict Get Item String
+137,1,bcopyall,bcopyall
+138,3,mJarFile,m Jar File
+139,3,entry.ty_init,entry ty init
+140,3,event_buf.y,event buf y
+141,1,vframe,vframe
+142,3,~MyPrivateData,My Private Data
+143,1,pgcookie,pgcookie
+144,1,myten,myten
+145,3,searchIDToSearch,search IDTo Search
+146,7,nglGetVertexAttribArrayObjectfvATI,ngl Get Vertex Attrib Array Objectfv ATI
+147,3,sec_print_f,sec print f
+148,2,desktopFilms,desktop Films
+149,2,xySpace,xy Space
+150,7,org.mars_sim.msp.simulation.IntPoint,org mars sim msp simulation Int Point
+151,2,vedit_x,vedit x
+152,1,NUMBLOCKPOPS,NUMBLOCKPOPS
+153,2,ntimesString,ntimes String
+154,4,si_3ButtonConfirm,si 3 Button Confirm
+155,3,FindEventHandler,Find Event Handler
+156,4,initConvertorOrderId,init Convertor Order Id
+157,4,sk_X509_push,sk X 509 push
+158,6,plan_guru_dft_r2c,plan guru dft r 2 c
+159,2,caseTNewline,case TNewline
+160,3,read_query_buf,read query buf
+161,2,painelNCasos,painel NCasos
+162,3,mSysPrefs,m Sys Prefs
+163,4,TestTableNonIgnorable,Test Table Non Ignorable
+164,2,aIPCCard,a IPCCard
+165,6,control.option.debug_trace_stack_change,control option debug trace stack change
+166,10,org.hermes.networks.jxta.messaging.JxtaGetDataRequestMessage,org hermes networks jxta messaging Jxta Get Data Request Message
+167,1,iused,iused
+168,3,popupOnMove,popup On Move
+169,2,new_sublist,new sublist
+170,3,hWndCombo,h Wnd Combo
+171,4,d2bd_read,d 2 bd read
+172,15,x0.oasisNamesTcOpendocumentXmlnsDrawing1.FillImageDocument.FillImage.Show,x 0 oasis Names Tc Opendocument Xmlns Drawing 1 Fill Image Document Fill Image Show
+173,4,fireGeobjectAnimationChanged,fire Geobject Animation Changed
+174,4,ui_displMapCOL,ui displ Map COL
+175,3,CreatePopupMenu,Create Popup Menu
+176,1,_MORKCONFIG_,MORKCONFIG
+177,2,XA_FLAGS,XA FLAGS
+178,1,Padarin,Padarin
+179,1,numberoferrorgroups,numberoferrorgroups
+180,9,uk.org.toot.swingui.audioui.mixerui.MixerPanelFactory,uk org toot swingui audioui mixerui Mixer Panel Factory
+181,4,GetContentScrollbarVisibility,Get Content Scrollbar Visibility
+182,4,manager_ph_control_block,manager ph control block
+183,4,NSSTrustDomain_DisableToken,NSSTrust Domain Disable Token
+184,2,need_compare,need compare
+185,1,filefield,filefield
+186,3,emit_base_init,emit base init
+187,3,ycc_rgb_convert,ycc rgb convert
+188,3,qwglDeleteContext,qwgl Delete Context
+189,3,pNewFilter,p New Filter
+190,6,kHeavenlyStemOrderIdCID,k Heavenly Stem Order Id CID
+191,4,this.optionalSuperclassType,this optional Superclass Type
+192,2,lowPriority,low Priority
+193,2,add_addr,add addr
+194,1,otherowners,otherowners
+195,4,NDB_LE_LCPFragmentCompleted,NDB LE LCPFragment Completed
+196,2,formatVFSUri,format VFSUri
+197,2,jshortArray,jshort Array
+198,2,IMAGE_PNG,IMAGE PNG
+199,2,e.pspeed,e pspeed
+200,4,Props.BOX_BG_COLOR,Props BOX BG COLOR
+201,2,RCS_lock,RCS lock
+202,3,toQueryExp,to Query Exp
+203,4,Src.m_lParam,Src m l Param
+204,2,BMPEncodeLine,BMPEncode Line
+205,6,SomeValuesFromRestrictionImpl.factory,Some Values From Restriction Impl factory
+206,3,initialJavaColor,initial Java Color
+207,3,cont.isSelected,cont is Selected
+208,6,dayOfWeekOf1st,day Of Week Of 1 st
+209,2,workbuf_shift,workbuf shift
+210,2,pasv_addr,pasv addr
+211,1,java,java
+212,2,visualizerVector,visualizer Vector
+213,3,file_sound_png,file sound png
+214,7,HardcodedCharacterLiteralsRuleFixTestCase,Hardcoded Character Literals Rule Fix Test Case
+215,4,com.player.posY,com player pos Y
+216,3,AttrInfoIterator,Attr Info Iterator
+217,7,hPB.accessParam.ioVRefNum,h PB access Param io VRef Num
+218,1,callingpres,callingpres
+219,2,connectPtr,connect Ptr
+220,5,SWTSwingGraphics2DClientProperty,SWTSwing Graphics 2 DClient Property
+221,2,setYCoeff,set YCoeff
+222,2,tnntpd.Group,tnntpd Group
+223,4,UnknownJavascriptContentParser,Unknown Javascript Content Parser
+224,6,SourceAttachmentBlock_filename_error_deviceinpath,Source Attachment Block filename error deviceinpath
+225,1,TTdepthage,TTdepthage
+226,3,WEBSVC_GEN_URLS,WEBSVC GEN URLS
+227,3,secondSrcBytes,second Src Bytes
+228,1,aibw,aibw
+229,9,org.outerj.daisy.sync.mapping.EntityMapping.MappedAttribute,org outerj daisy sync mapping Entity Mapping Mapped Attribute
+230,4,ASE_KeyMESH_ANIMATION,ASE Key MESH ANIMATION
+231,5,DosSetRelMaxFH,Dos Set Rel Max FH
+232,2,CTL_HOME,CTL HOME
+233,3,ResizeWindowBy,Resize Window By
+234,3,arg_blockname2,arg blockname 2
+235,2,runFlattener,run Flattener
+236,3,UnregisterHotKey,Unregister Hot Key
+237,2,defaultScheduler,default Scheduler
+238,1,encstr,encstr
+239,7,B1unitLengthSidewallJctCap,B 1 unit Length Sidewall Jct Cap
+240,4,kFontSizeKTable,k Font Size KTable
+241,4,MAX_VALUE.getMinutes,MAX VALUE get Minutes
+242,4,inst.step_matrix.yx,inst step matrix yx
+243,5,szFileIdiGetRedirect,sz File Idi Get Redirect
+244,4,LDAP_URL_ERR_BADSCOPE,LDAP URL ERR BADSCOPE
+245,2,TIMAPMailboxInfo,TIMAPMailbox Info
+246,3,RegEnumKey,Reg Enum Key
+247,1,ZZLogger,ZZLogger
+248,2,DELETE_MEDICATION,DELETE MEDICATION
+249,6,uiInfo.uiDC.feederCount,ui Info ui DC feeder Count
+250,2,userConn,user Conn
+251,2,retText,ret Text
+252,4,PRI_EVENT_SETUP_ACK,PRI EVENT SETUP ACK
+253,3,memFullErr,mem Full Err
+254,3,getElvisRenderer,get Elvis Renderer
+255,6,V4L2_CAP_TIMEPERFRAME,V 4 L 2 CAP TIMEPERFRAME
+256,3,increasedMaxValue,increased Max Value
+257,3,rl_comment_len,rl comment len
+258,5,c4x_int_reglist,c 4 x int reglist
+259,6,jboss.jmx.connector.rmi.RMIConnectorImpl,jboss jmx connector rmi RMIConnector Impl
+260,3,begin_compound_stmt,begin compound stmt
+261,1,regattempts,regattempts
+262,4,init_reply_lookup_names,init reply lookup names
+263,2,IDC_COLLECTIONVIEWAUTHORLABEL,IDC COLLECTIONVIEWAUTHORLABEL
+264,2,pVerifier,p Verifier
+265,4,u.ucclass.startIndex,u ucclass start Index
+266,2,MailboxImpl,Mailbox Impl
+267,4,textToUnicodeInfo,text To Unicode Info
+268,4,IDS_SOCKETS_INIT_FAILED,IDS SOCKETS INIT FAILED
+269,2,clone._comparators,clone comparators
+270,3,LTRA_MOD_LEN,LTRA MOD LEN
+271,5,nsTableCellReflowState,ns Table Cell Reflow State
+272,2,ParsedXMLContent,Parsed XMLContent
+273,4,get_address_cblas_chpmv,get address cblas chpmv
+274,5,ConstTipoMensajes.OBJ_NUEVO,Const Tipo Mensajes OBJ NUEVO
+275,4,NS_NewPlaceholderFrame,NS New Placeholder Frame
+276,6,m_bDetectZlibMemoryLeaks,m b Detect Zlib Memory Leaks
+277,5,h2v2_downsample,h 2 v 2 downsample
+278,4,ocspCertStatus_revoked,ocsp Cert Status revoked
+279,3,PolygonDraggingApplet,Polygon Dragging Applet
+280,3,NS_DECL_NSIDOMSVGPATHSEGMOVETOREL,NS DECL NSIDOMSVGPATHSEGMOVETOREL
+281,3,newopt.default_charset,newopt default charset
+282,3,NEWGROUPS_TIME_OFFSET,NEWGROUPS TIME OFFSET
+283,7,Java_gui_JMouseWheelFrame_setHook,Java gui JMouse Wheel Frame set Hook
+284,4,MFBFORMAT.setFillPattern,MFBFORMAT set Fill Pattern
+285,2,fileNum,file Num
+286,4,STAT2_SL_SUPPRESS,STAT 2 SL SUPPRESS
+287,6,net.sf.signs.gates.BTS4,net sf signs gates BTS 4
+288,1,xmldoc,xmldoc
+289,4,testReceivingASpringEvent,test Receiving ASpring Event
+290,2,max_str,max str
+291,2,VueImage,Vue Image
+292,4,GetMailAccountUrl,Get Mail Account Url
+293,3,actionPluginIds,action Plugin Ids
+294,4,cg_pmove.gauntletHit,cg pmove gauntlet Hit
+295,11,com.sun.xml.internal.bind.v2.schemagen.xmlschema.LocalAttribute,com sun xml internal bind v 2 schemagen xmlschema Local Attribute
+296,2,serverURILen,server URILen
+297,2,ns_viid,ns viid
+298,1,rdfsn,rdfsn
+299,3,GetPrefType,Get Pref Type
+300,1,JMPOFFM,JMPOFFM
+301,5,mng_init_idx1_ni,mng init idx 1 ni
+302,2,prevRef,prev Ref
+303,3,TreeNode.NOCHILD,Tree Node NOCHILD
+304,1,ENETDOWN,ENETDOWN
+305,1,maxstacksize,maxstacksize
+306,3,CEditor_SetPos,CEditor Set Pos
+307,4,Sinavi2TypeEcluse,Sinavi 2 Type Ecluse
+308,4,fqFromUrl.equals,fq From Url equals
+309,2,cbxMetamodel,cbx Metamodel
+310,3,cp_warning_at,cp warning at
+311,4,NS_NewGenericModule,NS New Generic Module
+312,8,QvtAstPackage.Literals.MULTI_DECLARATOR_VSEP_AST,Qvt Ast Package Literals MULTI DECLARATOR VSEP AST
+313,3,strFilePaths,str File Paths
+314,2,PAGE_UP,PAGE UP
+315,3,iaaa.application.Application,iaaa application Application
+316,6,qosReportsPreprocessor.incredibleReportsList,qos Reports Preprocessor incredible Reports List
+317,2,call_rtx,call rtx
+318,2,do_loan,do loan
+319,2,FreeverbWindow,Freeverb Window
+320,3,GetMenuType,Get Menu Type
+321,2,CODEC_MSZH,CODEC MSZH
+322,2,getMSEntity,get MSEntity
+323,3,unix_wild_match,unix wild match
+324,2,menubitmap_s,menubitmap s
+325,7,AdvancedQuickAssistProcessor_addParethesis_description,Advanced Quick Assist Processor add Parethesis description
+326,3,prev.pivot_x,prev pivot x
+327,4,execWAIT_GCP_REF,exec WAIT GCP REF
+328,3,AnsiToOem,Ansi To Oem
+329,5,ValueAxis.DEFAULT_CROSSHAIR_VISIBLE,Value Axis DEFAULT CROSSHAIR VISIBLE
+330,5,TemplateConstants.TEMPLATE_VARIABLE_REGEXP,Template Constants TEMPLATE VARIABLE REGEXP
+331,8,org.eclipse.team.core.diff.IThreeWayDiff,org eclipse team core diff IThree Way Diff
+332,2,SEARCHNOTES_LIFETIME,SEARCHNOTES LIFETIME
+333,4,image_proc_source_size,image proc source size
+334,3,q3_dmodels,q 3 dmodels
+335,4,CameraPhoneOntologyApp,Camera Phone Ontology App
+336,4,PR_GetObjectHeader,PR Get Object Header
+337,3,get_log_file,get log file
+338,5,javax.jms.InvalidDestinationException,javax jms Invalid Destination Exception
+339,3,avWeightDiff,av Weight Diff
+340,2,_rc_param_,rc param
+341,3,IDS_IP_HITS,IDS IP HITS
+342,6,AdminService.MAIL_QUEUE_ACTION_RESPONSE,Admin Service MAIL QUEUE ACTION RESPONSE
+343,2,repos_hooks,repos hooks
+344,5,gsl_sf_lambert_Wm1,gsl sf lambert Wm 1
+345,1,strpos,strpos
+346,2,e.cdelta,e cdelta
+347,1,dsortf,dsortf
+348,2,viewCrs,view Crs
+349,2,mysql_rollback,mysql rollback
+350,2,msgPriority,msg Priority
+351,3,fix_max_connections,fix max connections
+352,2,GPUndoManager,GPUndo Manager
+353,4,getSingleUserApi,get Single User Api
+354,3,BIO_CB_RETURN,BIO CB RETURN
+355,3,NS_IMAPSERVICE_CONTRACTID,NS IMAPSERVICE CONTRACTID
+356,6,PK11_SetPublicKeyNickname,PK 11 Set Public Key Nickname
+357,1,pflg,pflg
+358,1,cvh,cvh
+359,4,create_func_char_length,create func char length
+360,4,NotifyAllCondVar,Notify All Cond Var
+361,2,outputYMin,output YMin
+362,2,coprFilename,copr Filename
+363,3,get__newEnum,get new Enum
+364,1,EDWIN,EDWIN
+365,2,loadPGN,load PGN
+366,2,fieldf_mc,fieldf mc
+367,4,gpsDownloadWaypointsMenu,gps Download Waypoints Menu
+368,2,SHA_SUCCESS,SHA SUCCESS
+369,6,scalar08_float32_i387,scalar 08 float 32 i 387
+370,2,pcur_receive,pcur receive
+371,6,XmlEntityLibrary.INCLUDES_VALUE_TAG,Xml Entity Library INCLUDES VALUE TAG
+372,3,LwCustomView,Lw Custom View
+373,3,no_trans_update,no trans update
+374,5,aModRemoteRecList,a Mod Remote Rec List
+375,3,UnfreezeExpressionAction,Unfreeze Expression Action
+376,3,SSL_AIDX_DSA,SSL AIDX DSA
+377,3,tm_flush_logfiles,tm flush logfiles
+378,2,lookupProtocols,lookup Protocols
+379,3,attr.win_gravity,attr win gravity
+380,1,transtag,transtag
+381,1,fixshort,fixshort
+382,4,mySameKeyspaceList,my Same Keyspace List
+383,3,r_has_stype,r has stype
+384,2,dzmap_ptr,dzmap ptr
+385,3,HandleQueryReconversion,Handle Query Reconversion
+386,4,pkcs11PinArg,pkcs 11 Pin Arg
+387,4,com.pnehrer.mugs.textclient,com pnehrer mugs textclient
+388,3,plugindialog_moduleattach_y,plugindialog moduleattach y
+389,2,coperturaTot,copertura Tot
+390,3,MkdirInstallOp,Mkdir Install Op
+391,2,Cond_traverser,Cond traverser
+392,7,A_zimbraMessageIdDedupeCacheSize,A zimbra Message Id Dedupe Cache Size
+393,5,__db_db_truncate_4001_svc,db db truncate 4001 svc
+394,4,this.editableNameField,this editable Name Field
+395,2,ICmdPart,ICmd Part
+396,7,AddBorderPaddingToMaxElementSize,Add Border Padding To Max Element Size
+397,4,NS_STYLE_RESIZER_HORIZONTAL,NS STYLE RESIZER HORIZONTAL
+398,5,nssCKFWSession_DeregisterSessionObject,nss CKFWSession Deregister Session Object
+399,3,NS_FILE_FAILURE,NS FILE FAILURE
+400,3,PR_REPORT_ENTRYID,PR REPORT ENTRYID
+401,1,cserver,cserver
+402,3,flag_debug_asm,flag debug asm
+403,2,CG_Printf,CG Printf
+404,4,JSJMSG_JCLASS_PROP_DELETE,JSJMSG JCLASS PROP DELETE
+405,4,hostTcBlockRef,host Tc Block Ref
+406,5,gnu.bonobo.StorageHelper.write,gnu bonobo Storage Helper write
+407,2,comp_inodes,comp inodes
+408,2,TINYSIZE_KEY,TINYSIZE KEY
+409,3,UI_LoadArenas,UI Load Arenas
+410,2,NSTEMPLATEMATCHREFSET_METER,NSTEMPLATEMATCHREFSET METER
+411,1,FNSYM,FNSYM
+412,2,SQLExecuteParams,SQLExecute Params
+413,2,mnglcms_freetransform,mnglcms freetransform
+414,1,errobj,errobj
+415,2,matchArg,match Arg
+416,11,com.eviware.soapui.impl.wsdl.panels.request.components.editor.XmlDocument,com eviware soapui impl wsdl panels request components editor Xml Document
+417,2,~WaveEffect,Wave Effect
+418,2,FreeverbGain,Freeverb Gain
+419,7,initShowInMarkableSelectorPopupMenu,init Show In Markable Selector Popup Menu
+420,2,F_GSTRING,F GSTRING
+421,1,qev,qev
+422,5,cmmf_decode_process_cert_response,cmmf decode process cert response
+423,3,rhs2_AST,rhs 2 AST
+424,2,Inn_stk,Inn stk
+425,3,numPerPage,num Per Page
+426,4,JVM_ShowPrefsWindow,JVM Show Prefs Window
+427,3,old_preload_size,old preload size
+428,3,xgetAutomaticFocus,xget Automatic Focus
+429,7,groupEntResTypeHasBeenSet,group Ent Res Type Has Been Set
+430,5,MyAFPXVolMountInfoPtr,My AFPXVol Mount Info Ptr
+431,5,PK11ObjectListElement,PK 11 Object List Element
+432,3,NNTP_PROFILE_DELETE,NNTP PROFILE DELETE
+433,1,memsize,memsize
+434,5,nsTemplateMatchRefSet,ns Template Match Ref Set
+435,1,optflag,optflag
+436,3,__ham_add_dup,ham add dup
+437,6,u2BytesGRPrefix8FCharset,u 2 Bytes GRPrefix 8 FCharset
+438,11,com.hp.hpl.jena.sparql.engine.iterator.QueryIterBlockTriples,com hp hpl jena sparql engine iterator Query Iter Block Triples
+439,3,sAppShell,s App Shell
+440,1,cors,cors
+441,6,DbMapper.ATTRIBUTE_MAP_OWNER_ATTRIBUTE,Db Mapper ATTRIBUTE MAP OWNER ATTRIBUTE
+442,3,getcmpDeploymentDescriptor,getcmp Deployment Descriptor
+443,2,pulCount,pul Count
+444,1,catback,catback
+445,3,ns_log_eventlib,ns log eventlib
+446,3,ERROR_LOCK_PATH,ERROR LOCK PATH
+447,2,luxor.swing,luxor swing
+448,5,this.load_collection_progress_popup,this load collection progress popup
+449,2,SNIFFER_ENTRY,SNIFFER ENTRY
+450,2,IXPathProcessor,IXPath Processor
+451,4,partitionEntryLBA.length,partition Entry LBA length
+452,2,marshallState,marshall State
+453,5,gdev_prn_size_buf_planar,gdev prn size buf planar
+454,3,yyz_flush_buffer,yyz flush buffer
+455,3,info.m_prio,info m prio
+456,4,ReadCallBackFn,Read Call Back Fn
+457,3,cv_as_string,cv as string
+458,2,RID_LOC,RID LOC
+459,3,finish_for_cond,finish for cond
+460,3,ZimbraNamespace.ZIMBRA,Zimbra Namespace ZIMBRA
+461,4,MI_INDEX_BLOCK_MARGIN,MI INDEX BLOCK MARGIN
+462,2,hSel,h Sel
+463,3,CERTAuthInfoAccess,CERTAuth Info Access
+464,5,cmd_op_fill_rect_short,cmd op fill rect short
+465,5,aReflowState.footerFrame,a Reflow State footer Frame
+466,3,qaWebBrowser,qa Web Browser
+467,4,COSBasedObject.MetaClass,COSBased Object Meta Class
+468,3,removeAllWpts,remove All Wpts
+469,4,nsMsgFilterMotion,ns Msg Filter Motion
+470,3,__ham_onpage_replace,ham onpage replace
+471,5,nsDefaultSOAPEncoding_1_2,ns Default SOAPEncoding 1 2
+472,3,aAccValue,a Acc Value
+473,3,IDC_SPIN_VSCALE,IDC SPIN VSCALE
+474,1,yylex,yylex
+475,3,JavaPackage_methods,Java Package methods
+476,2,_get_dpa,get dpa
+477,2,que_names,que names
+478,2,uup_height,uup height
+479,3,compare_e_decimal,compare e decimal
+480,4,pSockProvServ,p Sock Prov Serv
+481,3,rollback_by_xid,rollback by xid
+482,3,rollup_make_fields,rollup make fields
+483,2,HWM_GROUP,HWM GROUP
+484,2,OnNPPURLNotify,On NPPURLNotify
+485,2,uni_workstations,uni workstations
+486,4,m_cdCur.i,m cd Cur i
+487,5,nsGenericHTMLContainerFormElement,ns Generic HTMLContainer Form Element
+488,2,bodyContent,body Content
+489,3,lame_get_lowpassfreq,lame get lowpassfreq
+490,5,glEvalCoord1f,gl Eval Coord 1 f
+491,4,snd_config_set_integer,snd config set integer
+492,3,IDD_PPG_FILES,IDD PPG FILES
+493,3,RES0_C,RES 0 C
+494,2,UserControl,User Control
+495,3,pdf_begin_aside,pdf begin aside
+496,3,ui_displayHelp,ui display Help
+497,3,txtNumRight,txt Num Right
+498,4,getServerSystemMode,get Server System Mode
+499,2,IFF_INUSE,IFF INUSE
+500,5,objectViewButtonActionPerformed,object View Button Action Performed
+501,2,deploySbb,deploy Sbb
+502,3,pIAdviseSink,p IAdvise Sink
+503,2,rcds.length,rcds length
+504,8,net.sf.pdune.client.dto.CommonUserDTO,net sf pdune client dto Common User DTO
+505,5,m_rcMethodLbl.top,m rc Method Lbl top
+506,2,DB_RECOVER,DB RECOVER
+507,1,kerror,kerror
+508,5,cz.hdf.gui.HProgressRunnable,cz hdf gui HProgress Runnable
+509,1,hcurr,hcurr
+510,1,wcscmp,wcscmp
+511,5,nsTextEditorCompositionListener,ns Text Editor Composition Listener
+512,2,m_buttoncount,m buttoncount
+513,2,incRU,inc RU
+514,3,direct_frame_copy,direct frame copy
+515,3,NS_UNICODETOMACROMAN_CONTRACTID,NS UNICODETOMACROMAN CONTRACTID
+516,2,notdef_index,notdef index
+517,3,tokv_syslog_lpr,tokv syslog lpr
+518,3,XShmCreateImage,XShm Create Image
+519,5,ocsp_FinishDecodingSingleResponses,ocsp Finish Decoding Single Responses
+520,2,oldRefnum,old Refnum
+521,3,SearchUI.LINE,Search UI LINE
+522,2,sgf_printboard,sgf printboard
+523,3,setPIdNum,set PId Num
+524,5,py_tdb_hnd_has_key,py tdb hnd has key
+525,5,py_tdb_hnd_first_key,py tdb hnd first key
+526,3,status.st_ctime,status st ctime
+527,4,Com_EndParseSession,Com End Parse Session
+528,3,dp8390_stop,dp 8390 stop
+529,6,jsd_GetPropertyVarArgSlot,jsd Get Property Var Arg Slot
+530,3,cli_show_locals,cli show locals
+531,7,this.field_26_cWordsFtnEnd,this field 26 c Words Ftn End
