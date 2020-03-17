@@ -11,4 +11,7 @@ corpora
 corpora/
 ./corpora
 .vscode
-ws-corpora.zip
+ws-corpora.zip*
+bert-large-portuguese-cased_tensorflow_checkpoint.zip*
+./portuguese-bert-large
+portuguese-bert-large/
