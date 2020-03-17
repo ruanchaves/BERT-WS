@@ -1,8 +1,8 @@
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
 CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES
-PEOPLEcut="./PEOPLEdata"
-BERT_CHINESE_DIR="chinese_L-12_H-768_A-12"
+PEOPLEcut="./oracle"
+BERT_CHINESE_DIR="wwm_cased_L-24_H-1024_A-16"
 DATABASE=$DATABASE
 
 DOCKER_MAJOR_VERSION_STRING=$(docker -v | grep -oP '([0-9]+)' | sed -n 1p)
