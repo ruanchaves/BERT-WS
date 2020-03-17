@@ -3,14 +3,17 @@ import numpy as np
 from multiprocessing import Pool
 import csv
 
-def read_table(filename):
-    df = pd.read_csv(filename)
-    return df[['assembled_sentence', 'sentence']]
 
-def process_table(df):
-    df['labels'] = df['assembled_sentence'].astype(str).combine(
-        df['sentence'].astype(str), tag_sentences)
-    return df[['assembled_sentence', 'labels']]
+def read_table(filename, field1='joined_ngram', field2='original_n_gram'):
+    df = pd.read_csv(filename)
+    return df[[field1, field2]]
+
+
+def process_table(df, field1='joined_ngram', field2='original_n_gram'):
+    df['labels'] = df[field1].astype(str).combine(
+        df[field2].astype(str), tag_sentences)
+    return df[[field1, 'labels']]
+
 
 def parallelize_dataframe(df, func, n_cores=1):
     df_split = np.array_split(df, n_cores)
@@ -19,6 +22,7 @@ def parallelize_dataframe(df, func, n_cores=1):
     pool.close()
     pool.join()
     return df
+
 
 def get_array_window(array, pos):
     if pos >= len(array):
@@ -35,6 +39,7 @@ def get_array_window(array, pos):
         next_ = array[pos+1]
     return Window(previous, current, next_)
 
+
 def tag_sentences(joined_sentence, sentence):
 
     pair = Pair(joined_sentence, sentence)
@@ -46,11 +51,13 @@ def tag_sentences(joined_sentence, sentence):
     assert('.' not in labels)
     return labels
 
+
 class Character(object):
 
     def __init__(self, char, idx):
         self.char = char
         self.idx = idx
+
 
 class Window(object):
 
@@ -59,12 +66,13 @@ class Window(object):
         self.current = current
         self.next = next_
 
+
 class Sentence(object):
 
     def __init__(self, string):
         self.string = string
         self.forbidden_pos = []
-        self.labels = ['.' for x in range(len(string)) ]
+        self.labels = ['.' for x in range(len(string))]
         self.pointer = 0
         self.chars = []
 
@@ -94,7 +102,7 @@ class Sentence(object):
             return character_object
 
     def reset(self):
-        self.labels = ['.' for x in range(len(string)) ]
+        self.labels = ['.' for x in range(len(self.string))]
         self.pointer = 0
         self.chars = []
 
@@ -119,14 +127,16 @@ class Pair(object):
         joined_sentence_no_space.build()
         sentence_no_space.build()
 
-        joined_sentence_no_space_pos = 0 
+        joined_sentence_no_space_pos = 0
         sentence_no_space_pos = 0
         diff = []
-        
+
         while True:
 
-            joined_sentence_no_space_char_window = get_array_window(joined_sentence_no_space.chars, joined_sentence_no_space_pos)
-            sentence_no_space_char_window = get_array_window(sentence_no_space.chars, sentence_no_space_pos)
+            joined_sentence_no_space_char_window = get_array_window(
+                joined_sentence_no_space.chars, joined_sentence_no_space_pos)
+            sentence_no_space_char_window = get_array_window(
+                sentence_no_space.chars, sentence_no_space_pos)
 
             if not joined_sentence_no_space_char_window.current and not sentence_no_space_char_window.current:
                 break
@@ -140,9 +150,10 @@ class Pair(object):
                     joined_sentence_no_space_pos += 1
                     sentence_no_space_pos += 1
                 else:
-                    diff.append(joined_sentence_no_space_char_window.current.idx)
+                    diff.append(
+                        joined_sentence_no_space_char_window.current.idx)
                     joined_sentence_no_space_pos += 1
-        
+
         counter = 0
         pos = []
         for idx, char in enumerate(joined_sentence):
@@ -152,7 +163,7 @@ class Pair(object):
                 if counter in diff:
                     pos.append(idx)
                 counter += 1
-            
+
         self.joined_sentence.set_forbidden_pos(pos)
 
     def tag_pair(self):
@@ -162,9 +173,11 @@ class Pair(object):
 
             chosen_label = 's'
 
-            joined_sentence_char_window = get_array_window(self.joined_sentence.chars, joined_sentence_pos)
-            sentence_char_window = get_array_window(self.sentence.chars, sentence_pos)
-            
+            joined_sentence_char_window = get_array_window(
+                self.joined_sentence.chars, joined_sentence_pos)
+            sentence_char_window = get_array_window(
+                self.sentence.chars, sentence_pos)
+
             if not joined_sentence_char_window.current or not sentence_char_window.current:
                 break
 
@@ -173,11 +186,12 @@ class Pair(object):
                 continue
 
             if not sentence_char_window.current.char.isalnum():
-                self.joined_sentence.set_label(joined_sentence_char_window.current.idx, chosen_label)
+                self.joined_sentence.set_label(
+                    joined_sentence_char_window.current.idx, chosen_label)
                 sentence_pos += 1
                 joined_sentence_pos += 1
                 continue
-            
+
             if sentence_char_window.previous and sentence_char_window.next:
                 if not sentence_char_window.previous.char.isalnum() and sentence_char_window.next.char.isalnum():
                     chosen_label = 'b'
@@ -200,26 +214,36 @@ class Pair(object):
             elif not sentence_char_window.previous and not sentence_char_window.next:
                 chosen_label = 's'
 
-            self.joined_sentence.set_label(joined_sentence_char_window.current.idx, chosen_label)
+            self.joined_sentence.set_label(
+                joined_sentence_char_window.current.idx, chosen_label)
 
             sentence_pos += 1
             joined_sentence_pos += 1
 
 
 if __name__ == '__main__':
-    filenames = {
-        'train': './corpus/train_ptwiki_2019_11_26.csv',
-        'test': './corpus/test_ptwiki_2019_11_26.csv',
-        'dev': './corpus/dev_ptwiki_2019_11_26.csv'
-    }
+    filenames = [
+        {
+            'original': './corpora/wiki/original/train_ptwiki_2019_11_26.csv',
+            'target': './corpora/wiki/processed/train.txt'
+        },
+        {
+            'original': './corpora/wiki/original/test_ptwiki_2019_11_26.csv',
+            'target': './corpora/wiki/processed/test.txt'
+        },
+        {
+            'original': './corpora/wiki/original/dev_ptwiki_2019_11_26.csv',
+            'target': './corpora/wiki/processed/dev.txt'
+        }
+    ]
 
-    for key in filenames.keys():
-        filenames[key] = read_table(filenames[key])
-        filenames[key] = parallelize_dataframe(filenames[key], process_table)
+    for idx, item in enumerate(filenames):
+        filenames[idx]['original'] = read_table(item['original'])
+        filenames[idx]['original'] = parallelize_dataframe(filenames[idx]['original'], process_table)
 
-    for key in filenames.keys():
-        filenames[key].to_csv(
-            key + '.txt',
+    for idx, item in enumerate(filenames):
+        filenames[idx]['original'].to_csv(
+            filenames[idx]['target'],
             sep='\t',
             index=False,
             header=False,
