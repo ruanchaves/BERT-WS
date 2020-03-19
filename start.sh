@@ -36,7 +36,7 @@ fi
 
 if [[ -n $ps_test ]] && [[ $recent_version -eq 1 ]]; then
     docker run --gpus all \
-        -v `pwd`:/home \
+        -v $(pwd):/home \
         --env PEOPLEcut=$PEOPLEcut \
         --env BERT_CHINESE_DIR=$BERT_CHINESE_DIR \
         --env CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES \
@@ -44,7 +44,7 @@ if [[ -n $ps_test ]] && [[ $recent_version -eq 1 ]]; then
         -it --rm ruanchaves/bert:1.0 bash /home/entrypoint.sh
 elif [[ -n $ps_test ]] && [[ $recent_version -eq 0 ]]; then
     nvidia-docker run \
-        -v `pwd`:/home \
+        -v $(pwd):/home \
         --env PEOPLEcut=$PEOPLEcut \
         --env BERT_CHINESE_DIR=$BERT_CHINESE_DIR \
         --env CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES \
@@ -52,7 +52,7 @@ elif [[ -n $ps_test ]] && [[ $recent_version -eq 0 ]]; then
         -it --rm ruanchaves/bert:1.0 bash /home/entrypoint.sh
 elif [[ -z $ps_test ]] && [[ $recent_version -eq 1 ]]; then
     sudo -E docker run --gpus all \
-        -v `pwd`:/home \
+        -v $(pwd):/home \
         --env PEOPLEcut=$PEOPLEcut \
         --env BERT_CHINESE_DIR=$BERT_CHINESE_DIR \
         --env CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES \
@@ -60,7 +60,7 @@ elif [[ -z $ps_test ]] && [[ $recent_version -eq 1 ]]; then
         -it --rm ruanchaves/bert:1.0 bash /home/entrypoint.sh
 elif [[ -z $ps_test ]] && [[ $recent_version -eq 0 ]]; then
     sudo -E nvidia-docker run \
-        -v `pwd`:/home \
+        -v $(pwd):/home \
         --env PEOPLEcut=$PEOPLEcut \
         --env BERT_CHINESE_DIR=$BERT_CHINESE_DIR \
         --env CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES \

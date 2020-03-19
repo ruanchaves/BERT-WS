@@ -15,3 +15,7 @@ ws-corpora.zip*
 bert-large-portuguese-cased_tensorflow_checkpoint.zip*
 ./portuguese-bert-large
 portuguese-bert-large/
+output/
+PEOPLEdata/
+__pycache__/
+.ipynb_checkpoints/
