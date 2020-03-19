@@ -15,7 +15,7 @@ def process_table(df, field1='joined_ngram', field2='original_n_gram'):
     return df[[field1, 'labels']]
 
 
-def parallelize_dataframe(df, func, n_cores=1):
+def parallelize_dataframe(df, func, n_cores=16):
     df_split = np.array_split(df, n_cores)
     pool = Pool(n_cores)
     df = pd.concat(pool.map(func, df_split))
@@ -224,17 +224,29 @@ class Pair(object):
 if __name__ == '__main__':
     filenames = [
         {
-            'original': './corpora/wiki/original/train_ptwiki_2019_11_26.csv',
-            'target': './corpora/wiki/processed/train.txt'
+            'original': './corpora/wiki/en/original/dev_enwiki_2019_11_30.csv',
+            'target': './corpora/wiki/en/processed/dev.txt'
         },
         {
-            'original': './corpora/wiki/original/test_ptwiki_2019_11_26.csv',
-            'target': './corpora/wiki/processed/test.txt'
+            'original': './corpora/wiki/en/original/test_enwiki_2019_11_30.csv',
+            'target': './corpora/wiki/en/processed/test.txt'
         },
         {
-            'original': './corpora/wiki/original/dev_ptwiki_2019_11_26.csv',
-            'target': './corpora/wiki/processed/dev.txt'
-        }
+            'original': './corpora/wiki/en/original/train_enwiki_2019_11_30.csv',
+            'target': './corpora/wiki/en/processed/train.txt'
+        },
+        {
+            'original': './corpora/wiki/pt/original/dev_ptwiki_2019_11_26.csv',
+            'target': './corpora/wiki/pt/processed/dev.txt'
+        },
+        {
+            'original': './corpora/wiki/pt/original/test_ptwiki_2019_11_26.csv',
+            'target': './corpora/wiki/pt/processed/test.txt'
+        },
+        {
+            'original': './corpora/wiki/pt/original/train_ptwiki_2019_11_26.csv',
+            'target': './corpora/wiki/pt/processed/train.txt'
+        },        
     ]
 
     for idx, item in enumerate(filenames):
