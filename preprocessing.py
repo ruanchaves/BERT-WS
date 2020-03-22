@@ -2,18 +2,45 @@ import pandas as pd
 import numpy as np
 from multiprocessing import Pool
 import csv
+import logging
 
+logging.basicConfig(level=logging.DEBUG)
+log = logging.getLogger(__name__)
 
 def read_table(filename, field1='joined_ngram', field2='original_n_gram'):
     df = pd.read_csv(filename)
     return df[[field1, field2]]
 
+def preprocess_text(text):
+    processed_text = text.replace('\t', '')
+    return processed_text
 
 def process_table(df, field1='joined_ngram', field2='original_n_gram'):
-    df['labels'] = df[field1].astype(str).combine(
-        df[field2].astype(str), tag_sentences)
+    df[field1] = df[field1].astype(str)
+    df[field2] = df[field2].astype(str)
+
+    df[field1] = df[field1].apply(preprocess_text)
+    df[field2] = df[field2].apply(preprocess_text)
+
+    df['labels'] = df[field1].combine(df[field2], tag_sentences)
     return df[[field1, 'labels']]
 
+def check_equality(s1,s2):
+    if len(str(s1)) == len(str(s2)):
+        return True
+    else:
+        return False
+
+def assert_table(df):
+    field1 = df.columns[0]
+    field2 = df.columns[1]
+    df['test'] = df[field2].combine(df[field1], check_equality)
+    if (df['test']==False).any():
+        show_df = df[df['test']==False]
+        df['len1'] = df[field1].astype(str).apply(len)
+        df['len2'] = df[field2].astype(str).apply(len)
+        log.warning('Labels are not consistent with the samples. Broken records: {0}'.format(str(show_df.shape)))
+    return df
 
 def parallelize_dataframe(df, func, n_cores=16):
     df_split = np.array_split(df, n_cores)
@@ -22,7 +49,6 @@ def parallelize_dataframe(df, func, n_cores=16):
     pool.close()
     pool.join()
     return df
-
 
 def get_array_window(array, pos):
     if pos >= len(array):
@@ -47,8 +73,10 @@ def tag_sentences(joined_sentence, sentence):
     pair.sentence.build()
     pair.tag_pair()
     labels = pair.joined_sentence.get_labels()
-    assert(len(joined_sentence) == len(labels))
-    assert('.' not in labels)
+    if len(joined_sentence) != len(labels):
+        log.warning('The label is not consistent with the sample: {0} != {1}'.format(len(joined_sentence), len(labels)))
+    if '.' in labels:
+        log.warning('One or more placeholders were not replaced with labels.')
     return labels
 
 
@@ -220,6 +248,30 @@ class Pair(object):
             sentence_pos += 1
             joined_sentence_pos += 1
 
+def save_dataframe(df, target):
+    field1 = df.columns[0]
+    field2 = df.columns[1]
+    df['toFile'] = df[field1] + '\t' + df[field2]
+    lines = df['toFile'].values.tolist()
+    open(target, 'w+').close()
+    with open(target, 'a') as f:
+        for line in lines:
+            print(line, file=f)
+
+
+def read_dataframe(target, field1='joined_ngram', field2='labels'):
+    values = []
+    with open(target, 'r') as f:
+        for line in f:
+            fields = line.rstrip('\n').split('\t')
+            row = {
+                field1: fields[0],
+                field2: fields[1]
+            }
+            values.append(row)
+    df = pd.DataFrame(values)
+    return df
+
 
 if __name__ == '__main__':
     filenames = [
@@ -249,15 +301,32 @@ if __name__ == '__main__':
         },        
     ]
 
+    log.info('Processing dataframes.')
     for idx, item in enumerate(filenames):
         filenames[idx]['original'] = read_table(item['original'])
-        filenames[idx]['original'] = parallelize_dataframe(filenames[idx]['original'], process_table)
 
+        # serial
+        # filenames[idx]['original'] = process_table(filenames[idx]['original'])
+        # filenames[idx]['original'] = assert_table(filenames[idx]['original'])
+
+        # parallel
+        filenames[idx]['original'] = parallelize_dataframe(filenames[idx]['original'], process_table)
+        parallelize_dataframe(filenames[idx]['original'], assert_table)
+
+    log.info('Saving.')
     for idx, item in enumerate(filenames):
-        filenames[idx]['original'].to_csv(
-            filenames[idx]['target'],
-            sep='\t',
-            index=False,
-            header=False,
-            quoting=csv.QUOTE_NONE
-        )
+        save_dataframe(filenames[idx]['original'], filenames[idx]['target'])
+
+    log.info('Checking saved files.')
+    for idx, item in enumerate(filenames):
+        log.info('Reading file: {0} '.format(filenames[idx]['target']))
+        df = read_dataframe(filenames[idx]['target'])
+        # df = pd.read_csv(filenames[idx]['target'], header=None, sep='\t')
+
+        # serial 
+        # assert_table(df)
+
+        # parallel
+        parallelize_dataframe(df, assert_table)
+
+    log.info('Finished checking saved files.')

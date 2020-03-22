@@ -19,7 +19,7 @@ import pickle
 from evaluation import SegmenterEvaluation
 from database import Record, Pair, Logger
 
-application = os.environ['PEOPLEcut'] + '_' + ''.join([x for x in str(datetime.now()) if x.isdigit() ])
+application = os.environ['DATA_DIR'] + '_' + ''.join([x for x in str(datetime.now()) if x.isdigit() ])
 logger = Logger(application)
 
 flags = tf.flags
@@ -245,8 +245,8 @@ def output_seg_result(output_dir, ori_labels, des_labels):
     lenth = len(tokens)
     assert len(ori_labels) == lenth
     assert len(des_labels) == lenth
-    # seg_result_file = os.path.join(output_dir, "seg_result.txt")
-    # writer = open(seg_result_file, "w", encoding="utf-8")
+    seg_result_file = os.path.join(output_dir, "seg_result.txt")
+    writer = open(seg_result_file, "w", encoding="utf-8")
     for i in range(lenth):
         token = tokens[i]
         ori_label = ori_labels[i]
@@ -259,7 +259,11 @@ def output_seg_result(output_dir, ori_labels, des_labels):
             "des_seg": des_seg
         }
         logger.add_pair(record)
-    # writer.close()
+        writer.write(token + "\n")
+        writer.write(ori_seg + "\n")
+        writer.write(des_seg + "\n")
+        writer.write("\n")
+    writer.close()
 
 def convert_single_example(ex_index, example, label_list, max_seq_length, tokenizer,mode):
     label_map = {}
@@ -338,14 +342,14 @@ def convert_single_example(ex_index, example, label_list, max_seq_length, tokeni
             }
             logger.add(record)
 
-        # tf.logging.info("*** Example ***")
-        # tf.logging.info("guid: %s" % (example.guid))
-        # tf.logging.info("tokens: %s" % " ".join(
-        #     [tokenization.printable_text(x) for x in tokens]))
-        # tf.logging.info("input_ids: %s" % " ".join([str(x) for x in input_ids]))
-        # tf.logging.info("input_mask: %s" % " ".join([str(x) for x in input_mask]))
-        # tf.logging.info("segment_ids: %s" % " ".join([str(x) for x in segment_ids]))
-        # tf.logging.info("label_ids: %s" % " ".join([str(x) for x in label_ids]))
+        tf.logging.info("*** Example ***")
+        tf.logging.info("guid: %s" % (example.guid))
+        tf.logging.info("tokens: %s" % " ".join(
+            [tokenization.printable_text(x) for x in tokens]))
+        tf.logging.info("input_ids: %s" % " ".join([str(x) for x in input_ids]))
+        tf.logging.info("input_mask: %s" % " ".join([str(x) for x in input_mask]))
+        tf.logging.info("segment_ids: %s" % " ".join([str(x) for x in segment_ids]))
+        tf.logging.info("label_ids: %s" % " ".join([str(x) for x in label_ids]))
 
     feature = InputFeatures(
         input_ids=input_ids,
@@ -372,7 +376,7 @@ def filed_based_convert_examples_to_features(
     writer = tf.python_io.TFRecordWriter(output_file)
     for (ex_index, example) in enumerate(examples):
         if ex_index % 5000 == 0:
-            # tf.logging.info("Writing example %d of %d" % (ex_index, len(examples)))
+            tf.logging.info("Writing example %d of %d" % (ex_index, len(examples)))
             record = {
                 "category": "example",
                 "key": str(ex_index),
@@ -469,9 +473,9 @@ def model_fn_builder(bert_config, num_labels, init_checkpoint, learning_rate,
                      num_train_steps, num_warmup_steps, use_tpu,
                      use_one_hot_embeddings):
     def model_fn(features, labels, mode, params):
-        # tf.logging.info("*** Features ***")
+        tf.logging.info("*** Features ***")
         for name in sorted(features.keys()):
-            # tf.logging.info("  name = %s, shape = %s" % (name, features[name].shape))
+            tf.logging.info("  name = %s, shape = %s" % (name, features[name].shape))
             record = {
                 "category": "features",
                 "key": str(name),
@@ -501,14 +505,14 @@ def model_fn_builder(bert_config, num_labels, init_checkpoint, learning_rate,
                 scaffold_fn = tpu_scaffold
             else:
                 tf.train.init_from_checkpoint(init_checkpoint, assignment_map)
-        # tf.logging.info("**** Trainable Variables ****")
+        tf.logging.info("**** Trainable Variables ****")
 
         for var in tvars:
             init_string = ""
             if var.name in initialized_variable_names:
                 init_string = ", *INIT_FROM_CKPT*"
-            # tf.logging.info("  name = %s, shape = %s%s", var.name, var.shape,
-            #                 init_string)
+            tf.logging.info("  name = %s, shape = %s%s", var.name, var.shape,
+                            init_string)
             record = {
                 "category": 'init_from_ckpt',
                 "key": str(var.name),
@@ -694,7 +698,7 @@ def main(_):
         ori_labels, des_labels = [], []
         for each in result:
             if count % 1000 == 0:
-                # tf.logging.info("Processing example: %d" % (count))
+                tf.logging.info("Processing example: %d" % (count))
                 record['key'] = 'Processing example'
                 record['value'] = str(count)
                 logger.add(record)
