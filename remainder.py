@@ -25,9 +25,9 @@ def merge_frames(original, results):
 
 def get_nan_rows(df):
     df = df[df.isna().any(axis=1)]
-    df = df[['token', 1]]
+    df = df[['token', 'labels']]
     df['token'] = df['token'].str.replace('\t', ' ')
-    df[1] = df[1].str.replace('\t', ' ')
+    df['labels'] = df['labels'].str.replace('\t', ' ')
     return df
 
 # def save_df(df, destination):
