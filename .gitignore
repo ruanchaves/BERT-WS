@@ -20,3 +20,4 @@ PEOPLEdata/
 __pycache__/
 .ipynb_checkpoints/
 results.csv
+./results.csv
