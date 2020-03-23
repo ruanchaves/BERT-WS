@@ -6,6 +6,8 @@ import os
 import datetime
 Base = declarative_base()
 
+import sys
+
 class Record(Base):
     __tablename__ = 'logs'
 
