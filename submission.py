@@ -19,5 +19,12 @@ if __name__ == '__main__':
     original = pd.read_csv(options['original'])
     original = pd.merge(original, processed, on='joined_ngram', how='left')
     original = pd.merge(original, results, on='joined_ngram', how='left')
-    original = original.drop_duplicates(subset='joined_ngram')
+    original = original.drop_duplicates(subset=[
+        'article_uuid',
+        'sentence',
+        'joined_ngram',
+        'original_n_gram',
+        'joined_position',
+        'n_gram_size'
+        ,'sentence_len'])
     original.to_csv("results_enwiki_2019_11_30.tsv", sep='\t')
