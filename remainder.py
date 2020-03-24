@@ -64,7 +64,7 @@ if __name__ == '__main__':
             "identifier": [ 
                 "corpora/wiki/en/processed_20200319155305799110",
                 "corpora/wiki/en/remainder_20200324001107666345"
-            ] 
+            ],
             "original": "./corpora/wiki/en/processed/test.txt",
             "target": "./corpora/wiki/en/remainder/test.txt"
         },
