@@ -22,12 +22,14 @@ if __name__ == '__main__':
     original['labels'] = ''
     original['prediction'] = ''
     for i, row in original.iterrows():
+        if i % 1000:
+            print(i)
         try:
-            labels_query = processed[processed['joined_ngram'].str.match(original.at[i, 'joined_ngram'])].to_dict('records')[0]['labels']
+            labels_query = processed[processed['joined_ngram'] == original.at[i, 'joined_ngram']].to_dict('records')[0]['labels']
         except:
             labels_query = ''
         try:    
-            prediction_query = results[results['joined_ngram'].str.match(original.at[i, 'joined_ngram'])].to_dict('records')[0]['prediction']
+            prediction_query = results[results['joined_ngram'] == original.at[i, 'joined_ngram']].to_dict('records')[0]['prediction']
         except:
             prediction_query = ''
         original.at[i, 'labels'] = labels_query
