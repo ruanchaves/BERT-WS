@@ -16,4 +16,5 @@ if __name__ == '__main__':
 
     original = pd.merge(original, processed, on='joined_ngram', how='left')
     original = pd.merge(original, results, on='joined_ngram' how='left')
+    original.drop_duplicates(on='joined_ngram')
     original.to_csv("results_enwiki_2019_11_30.tsv", sep='\t')
