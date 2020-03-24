@@ -23,11 +23,11 @@ if __name__ == '__main__':
     original['prediction'] = np.nan
     for i, row in original.iterrows():
         try:
-            labels_query = processed[processed['joined_ngram'].str.matches(original.at[i, 'joined_ngram'])].to_dict('records')[0]['labels']
+            labels_query = processed[processed['joined_ngram'].str.match(original.at[i, 'joined_ngram'])].to_dict('records')[0]['labels']
         except:
             labels_query = np.nan
         try:    
-            prediction_query = results[results['joined_ngram'].str.matches(original.at[i, 'joined_ngram'])].to_dict('records')[0]['prediction']
+            prediction_query = results[results['joined_ngram'].str.match(original.at[i, 'joined_ngram'])].to_dict('records')[0]['prediction']
         except:
             prediction_query = np.nan
         original.at[i, 'labels'] = labels_query
