@@ -17,8 +17,9 @@ def read_original(filename):
     df = df.rename(columns={'joined_ngram': 'token'})
     return df
     
-def identifier_filter(df, identifier):
-    return df[df['identifier'].str.contains(identifier)]
+def identifier_filter(df, words):
+    mask = df['identifier'].str.contains(r'\b(?:{})\b'.format('|'.join(words)))
+    return df[mask]
 
 def merge_frames(original, results):
     return pd.merge(original, results, on='token', how='left')
@@ -60,7 +61,10 @@ if __name__ == '__main__':
     tables = [
         {
             "source": "results.csv",
-            "identifier": "./corpora/wiki/en/processed_20200319155305799110",
+            "identifier": [ 
+                "corpora/wiki/en/processed_20200319155305799110",
+                "corpora/wiki/en/remainder_20200324001107666345"
+            ] 
             "original": "./corpora/wiki/en/processed/test.txt",
             "target": "./corpora/wiki/en/remainder/test.txt"
         },
