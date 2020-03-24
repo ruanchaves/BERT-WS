@@ -4,7 +4,7 @@ import pandas as pd
 if __name__ == '__main__':
     options = {
         "results" : "results.csv",
-        "processed": "./corpora/wiki/en/processed/test.txt"
+        "processed": "./corpora/wiki/en/processed/test.txt",
         "original": "./corpora/wiki/en/original/test_enwiki_2019_11_30.csv"
     }
 
@@ -15,6 +15,6 @@ if __name__ == '__main__':
     original = pd.read_csv(options['original'])
 
     original = pd.merge(original, processed, on='joined_ngram', how='left')
-    original = pd.merge(original, results, on='joined_ngram' how='left')
-    original.drop_duplicates(on='joined_ngram')
+    original = pd.merge(original, results, on='joined_ngram', how='left')
+    original = original.drop_duplicates(on='joined_ngram')
     original.to_csv("results_enwiki_2019_11_30.tsv", sep='\t')
