@@ -19,17 +19,17 @@ if __name__ == '__main__':
     processed = processed.dropna()
 
     original = pd.read_csv(options['original'])
-    original['labels'] = np.nan
-    original['prediction'] = np.nan
+    original['labels'] = ''
+    original['prediction'] = ''
     for i, row in original.iterrows():
         try:
             labels_query = processed[processed['joined_ngram'].str.match(original.at[i, 'joined_ngram'])].to_dict('records')[0]['labels']
         except:
-            labels_query = np.nan
+            labels_query = ''
         try:    
             prediction_query = results[results['joined_ngram'].str.match(original.at[i, 'joined_ngram'])].to_dict('records')[0]['prediction']
         except:
-            prediction_query = np.nan
+            prediction_query = ''
         original.at[i, 'labels'] = labels_query
         original.at[i, 'prediction'] = prediction_query
 
