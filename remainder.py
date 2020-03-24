@@ -19,7 +19,9 @@ def read_original(filename):
     
 def identifier_filter(df, words):
     mask = df['identifier'].str.contains(r'\b(?:{})\b'.format('|'.join(words)))
-    return df[mask]
+    df = df[mask]
+    print(df.head())
+    return df
 
 def merge_frames(original, results):
     return pd.merge(original, results, on='token', how='left')
@@ -81,6 +83,7 @@ if __name__ == '__main__':
         original = read_original(item['original'])
         merged = merge_frames(original, df)
         nan_merged = get_nan_rows(merged)
+        print(nan_merged)
         destination = item['target']
         folder = os.path.split(destination)[0]
         pathlib.Path(folder).mkdir(parents=True, exist_ok=True)
