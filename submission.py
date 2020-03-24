@@ -1,5 +1,6 @@
 from preprocessing import read_dataframe
 import pandas as pd
+import numpy as np
 
 if __name__ == '__main__':
     options = {
@@ -15,16 +16,21 @@ if __name__ == '__main__':
     results = results.drop_duplicates(subset='joined_ngram')
 
     processed = read_dataframe(options['processed'], field1='joined_ngram', field2='labels')
+    processed = processed.dropna()
 
     original = pd.read_csv(options['original'])
-    original = pd.merge(original, processed, on='joined_ngram', how='left')
-    original = pd.merge(original, results, on='joined_ngram', how='left')
-    original = original.drop_duplicates(subset=[
-        'article_uuid',
-        'sentence',
-        'joined_ngram',
-        'original_n_gram',
-        'joined_position',
-        'n_gram_size'
-        ,'sentence_len'])
+    original['labels'] = np.nan
+    original['prediction'] = np.nan
+    for i, row in original.iterrows():
+        try:
+            labels_query = processed[processed['joined_ngram'].str.matches(original.at(i, 'joined_ngram'))].to_dict('records')[0]['labels']
+        except:
+            labels_query = np.nan
+        try:    
+            prediction_query = results[results['joined_ngram'].str.matches(original.at(i, 'joined_ngram'))].to_dict('records')[0]['prediction']
+        except:
+            prediction_query = np.nan
+        original.at(i, 'labels') = labels_query
+        original.at(i, 'prediction') = prediction_query
+
     original.to_csv("results_enwiki_2019_11_30.tsv", sep='\t')
