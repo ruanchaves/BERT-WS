@@ -19,7 +19,7 @@ import pickle
 from evaluation import SegmenterEvaluation
 from database import Record, Pair, Logger
 
-application = os.environ['DATA_DIR'] + '_' + ''.join([x for x in str(datetime.now()) if x.isdigit() ])
+application = os.environ['TEST_NAME'] + '_' + os.environ['DATA_DIR'] + '_' + str(int(datetime.now().timestamp()))
 logger = Logger(application)
 
 flags = tf.flags

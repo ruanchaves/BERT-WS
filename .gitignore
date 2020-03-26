@@ -21,3 +21,10 @@ __pycache__/
 .ipynb_checkpoints/
 results.csv
 ./results.csv
+./env.list
+env.list
+./ws-corpora.zip
+ws-corpora.zip
+./results.csv
+./results_enwiki_2019_11_30.tsv
+results_enwiki_2019_11_30.tsv
