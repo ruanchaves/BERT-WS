@@ -18,7 +18,9 @@ import tensorflow as tf
 import pickle
 from evaluation import SegmenterEvaluation
 from database import Record, Pair, Logger
+import pathlib
 
+pathlib.Path(os.environ['OUTPUT_DIR']).mkdir(parents=True, exist_ok=True)
 application = os.environ['TEST_NAME'] + '_' + os.environ['DATA_DIR'] + '_' + str(int(datetime.now().timestamp()))
 logger = Logger(application)
 
@@ -269,7 +271,7 @@ def convert_single_example(ex_index, example, label_list, max_seq_length, tokeni
     label_map = {}
     for (i, label) in enumerate(label_list,1):
         label_map[label] = i
-    label2idpath = './output/label2id.pkl'
+    label2idpath = os.path.join(FLAGS.output_dir, 'label2id.pkl')
     if not os.path.exists(label2idpath):
         with open(label2idpath,'wb') as w:
             pickle.dump(label_map, w)
@@ -655,7 +657,7 @@ def main(_):
 
     if FLAGS.do_predict:
         token_path = os.path.join(FLAGS.output_dir, "token_test.txt")
-        with open('./output/label2id.pkl', 'rb') as rf:
+        with open(os.path.join(FLAGS.output_dir, 'label2id.pkl'), 'rb') as rf:
             label2id = pickle.load(rf)
             id2label = {value: key for key, value in label2id.items()}
         if os.path.exists(token_path):

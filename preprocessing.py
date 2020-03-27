@@ -3,6 +3,9 @@ import numpy as np
 from multiprocessing import Pool
 import csv
 import logging
+import json 
+import sys
+import pathlib
 
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger(__name__)
@@ -249,6 +252,9 @@ class Pair(object):
             joined_sentence_pos += 1
 
 def save_dataframe(df, target):
+    folder = os.path.split(target)[0]
+    pathlib.Path(folder).mkdir(parents=True, exist_ok=True)
+    
     field1 = df.columns[0]
     field2 = df.columns[1]
     df['toFile'] = df[field1] + '\t' + df[field2]
@@ -274,32 +280,11 @@ def read_dataframe(target, field1='joined_ngram', field2='labels'):
 
 
 if __name__ == '__main__':
-    filenames = [
-        {
-            'original': './corpora/wiki/en/original/dev_enwiki_2019_11_30.csv',
-            'target': './corpora/wiki/en/processed/dev.txt'
-        },
-        {
-            'original': './corpora/wiki/en/original/test_enwiki_2019_11_30.csv',
-            'target': './corpora/wiki/en/processed/test.txt'
-        },
-        {
-            'original': './corpora/wiki/en/original/train_enwiki_2019_11_30.csv',
-            'target': './corpora/wiki/en/processed/train.txt'
-        },
-        {
-            'original': './corpora/wiki/pt/original/dev_ptwiki_2019_11_26.csv',
-            'target': './corpora/wiki/pt/processed/dev.txt'
-        },
-        {
-            'original': './corpora/wiki/pt/original/test_ptwiki_2019_11_26.csv',
-            'target': './corpora/wiki/pt/processed/test.txt'
-        },
-        {
-            'original': './corpora/wiki/pt/original/train_ptwiki_2019_11_26.csv',
-            'target': './corpora/wiki/pt/processed/train.txt'
-        },        
-    ]
+    filenames = ''
+    with open(sys.argv[1],'r') as f:
+        filenames = json.load(f)
+
+    log.info('Loaded settings from {0}'.format(filenames))
 
     log.info('Processing dataframes.')
     for idx, item in enumerate(filenames):

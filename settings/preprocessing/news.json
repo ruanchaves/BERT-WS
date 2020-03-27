@@ -1,0 +1,14 @@
+[
+    {
+        "original": "/home/acquila/yerai-data/news/EN/corpus/train_news.2016.en.shuffled.csv",
+       "target": "./corpora/news/en/processed/train.txt"
+    },
+    {
+        "original": "/home/acquila/yerai-data/news/EN/corpus/dev_news.2016.en.shuffled.csv",
+        "target": "./corpora/news/en/processed/dev.txt"
+    },
+    {
+        "original": "/home/acquila/yerai-data/news/EN/corpus/test_news.2016.en.shuffled.csv",
+        "target": "./corpora/news/en/processed/test.txt"
+    },
+]
