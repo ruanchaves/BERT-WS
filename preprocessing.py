@@ -6,6 +6,7 @@ import logging
 import json 
 import sys
 import pathlib
+import os
 
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger(__name__)
@@ -254,7 +255,7 @@ class Pair(object):
 def save_dataframe(df, target):
     folder = os.path.split(target)[0]
     pathlib.Path(folder).mkdir(parents=True, exist_ok=True)
-    
+
     field1 = df.columns[0]
     field2 = df.columns[1]
     df['toFile'] = df[field1] + '\t' + df[field2]
