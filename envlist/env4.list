@@ -1,0 +1,6 @@
+DATA_DIR=datasets/oracle_2
+MODEL_DIR=models/uncased_L-4_H-256_A-4
+CHECKPOINT=models/uncased_L-4_H-256_A-4
+OUTPUT_DIR=./models/oracle_2
+TEST_NAME=oracle_2
+DATABASE=empty

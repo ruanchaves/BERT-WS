@@ -1,6 +1,10 @@
 cd "$(dirname "${BASH_SOURCE[0]}")"
+cd ..
+cd ..
 
 ENTRYPOINT=$ENTRYPOINT
+ENV_LIST=$ENV_LIST
+CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES
 
 DOCKER_MAJOR_VERSION_STRING=$(docker -v | grep -oP '([0-9]+)' | sed -n 1p)
 DOCKER_MINOR_VERSION_STRING=$(docker -v | grep -oP '([0-9]+)' | sed -n 2p)
@@ -34,23 +38,29 @@ fi
 if [[ -n $ps_test ]] && [[ $recent_version -eq 1 ]]; then
     docker run --gpus all \
         -v $(pwd):/home \
-        --env-file env.list \
+        --env-file $ENV_LIST \
+        --env CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES \
         -it --rm ruanchaves/bert:1.0 bash /home/$ENTRYPOINT
 elif [[ -n $ps_test ]] && [[ $recent_version -eq 0 ]]; then
     nvidia-docker run \
         -v $(pwd):/home \
-        --env-file env.list \
+        --env-file $ENV_LIST \
+        --env CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES \
         -it --rm ruanchaves/bert:1.0 bash /home/$ENTRYPOINT
 elif [[ -z $ps_test ]] && [[ $recent_version -eq 1 ]]; then
     sudo -E docker run --gpus all \
         -v $(pwd):/home \
-        --env-file env.list \
+        --env-file $ENV_LIST \
+        --env CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES \
         -it --rm ruanchaves/bert:1.0 bash /home/$ENTRYPOINT
 elif [[ -z $ps_test ]] && [[ $recent_version -eq 0 ]]; then
     sudo -E nvidia-docker run \
         -v $(pwd):/home \
-        --env-file env.list \
+        --env-file $ENV_LIST \
+        --env CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES \
         -it --rm ruanchaves/bert:1.0 bash /home/$ENTRYPOINT
 else
     echo "Not found."
 fi
+
+cd "$(dirname "${BASH_SOURCE[0]}")"

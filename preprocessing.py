@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from multiprocessing import Pool
+from pathos.multiprocessing import ProcessingPool as Pool
 import csv
 import logging
 import json 
@@ -46,7 +46,7 @@ def assert_table(df):
         log.warning('Labels are not consistent with the samples. Broken records: {0}'.format(str(show_df.shape)))
     return df
 
-def parallelize_dataframe(df, func, n_cores=16):
+def parallelize_dataframe(df, func, n_cores=10):
     df_split = np.array_split(df, n_cores)
     pool = Pool(n_cores)
     df = pd.concat(pool.map(func, df_split))

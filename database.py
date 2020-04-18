@@ -30,23 +30,35 @@ class Pair(Base):
 
 class Logger(object):
 
-    def __init__(self, application):
+    def __init__(self, application, ignore=False):
         self.application = application
-        database_string = os.environ['DATABASE']
-        self.engine = create_engine(database_string)
-        Session = sessionmaker(bind=self.engine)
-        self.session = Session()
-        Base.metadata.create_all(self.engine)
+        self.ignore = ignore
+        try:
+            database_string = os.environ['DATABASE']
+            self.engine = create_engine(database_string)
+            Session = sessionmaker(bind=self.engine)
+            self.session = Session()
+            Base.metadata.create_all(self.engine)
+        except:
+            if not self.ignore:
+                raise Exception()
+
 
     def add(self, params):
-        params['application'] = self.application
-        record = Record(**params)
-        self.session.add(record)
-        self.session.commit()
+        try:
+            params['application'] = self.application
+            record = Record(**params)
+            self.session.add(record)
+            self.session.commit()
+        if not self.ignore:
+            raise Exception()
 
     def add_pair(self, params):
-        params['application'] = self.application
-        pair = Pair(**params)
-        self.session.add(pair)
-        self.session.commit()
+        try:
+            params['application'] = self.application
+            pair = Pair(**params)
+            self.session.add(pair)
+            self.session.commit()
+        if not self.ignore:
+            raise Exception()
 

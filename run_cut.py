@@ -22,7 +22,7 @@ import pathlib
 
 pathlib.Path(os.environ['OUTPUT_DIR']).mkdir(parents=True, exist_ok=True)
 application = os.environ['TEST_NAME'] + '_' + os.environ['DATA_DIR'] + '_' + str(int(datetime.now().timestamp()))
-logger = Logger(application)
+logger = Logger(application, ignore=True)
 
 flags = tf.flags
 

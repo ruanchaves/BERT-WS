@@ -1,0 +1,6 @@
+DATA_DIR=datasets/bt11
+MODEL_DIR=models/uncased_L-4_H-256_A-4
+CHECKPOINT=models/uncased_L-4_H-256_A-4
+OUTPUT_DIR=./models/bt11
+TEST_NAME=bt11
+DATABASE=empty
