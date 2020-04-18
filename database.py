@@ -50,8 +50,9 @@ class Logger(object):
             record = Record(**params)
             self.session.add(record)
             self.session.commit()
-        if not self.ignore:
-            raise Exception()
+        except:
+            if not self.ignore:
+                raise Exception()
 
     def add_pair(self, params):
         try:
@@ -59,6 +60,7 @@ class Logger(object):
             pair = Pair(**params)
             self.session.add(pair)
             self.session.commit()
-        if not self.ignore:
-            raise Exception()
+        except:
+            if not self.ignore:
+                raise Exception()
 
