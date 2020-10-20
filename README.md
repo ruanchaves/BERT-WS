@@ -6,52 +6,25 @@ This is a only slightly modified version of the original repository to work with
 
 In order to reproduce our results, please utilize the BERT-Mini model made available at [googleresearch/bert](https://github.com/google-research/bert) instead of BERT-Base Chinese.
 
-For more information about this project, please refer to the [original README](https://github.com/jiangpinglei/BERT_ChineseWordSegment), which is also reproduced below.
+For more information about this project, please refer to the [original README](https://github.com/jiangpinglei/BERT_ChineseWordSegment).
 
-# BERT_ChineseWordSegment ( original README )
-
-Try to implement a Chinese word segment work based on Google BERT!
-
-The corpus is extracted from The People's Daily (Chinese: 人民日报, Renmin Ribao).
-
-  <br />
-  
-First git clone https://github.com/google-research/bert.git
-
-Second put the three scripts:  modeling.py、optimization.py、tokenization.py into this project, structure is as follows:
-
-    BERT_ChinesewordSegment
-
-        |____ PEOPLEdata
-        |____ output
-        |____ modeling.py
-        |____ optimization.py
-        |____ tokenization.py
-        |____ run_cut.py
-        |____ evaluation.py
-
-Third download the Chinese pre-trained bert model [BERT-Base, Chinese](https://storage.googleapis.com/bert_models/2018_11_03/chinese_L-12_H-768_A-12.zip)
-
-And then set pre-trained model path and data path environment: $BERT_CHINESE_DIR、$PEOPLEcut
-
-## run
+# Citation
 
 ```
-python3 run_cut.py   --task_name="people"   --do_train=True   --do_predict=True  --data_dir=$PEOPLEcut    --vocab_file=$BERT_CHINESE_DIR/vocab.txt   --bert_config_file=$BERT_CHINESE_DIR/bert_config.json   --init_checkpoint=$BERT_CHINESE_DIR/bert_model.ckpt    --max_seq_length=128    --train_batch_size=32    --learning_rate=2e-5   --num_train_epochs=3.0    --output_dir=./output/result_cut/
+@InProceedings{10.1007/978-3-030-61377-8_33,
+author="Rodrigues, Ruan Chaves
+and Rocha, Acquila Santos
+and Inuzuka, Marcelo Akira
+and do Nascimento, Hugo Alexandre Dantas",
+editor="Cerri, Ricardo
+and Prati, Ronaldo C.",
+title="Domain Adaptation of Transformers for English Word Segmentation",
+booktitle="Intelligent Systems",
+year="2020",
+publisher="Springer International Publishing",
+address="Cham",
+pages="483--496",
+abstract="Word segmentation can contribute to improve the results of natural language processing tasks on several problem domains, including social media sentiment analysis, source code summarization and neural machine translation. Taking the English language as a case study, we fine-tune a Transformer architecture which has been trained through the Pre-trained Distillation (PD) algorithm, while comparing it to previous experiments with recurrent neural networks. We organize datasets and resources from multiple application domains under a unified format, and demonstrate that our proposed architecture has competitive performance and superior cross-domain generalization in comparison with previous approaches for word segmentation in Western languages.",
+isbn="978-3-030-61377-8"
+}
 ```
-
-It will take about 28 minutes with 3 epochs on a GPU.
-
-This will produce an evaluate output like this:
-
-```
-INFO:tensorflow:***** Eval results *****
-INFO:tensorflow:  count = 9925
-INFO:tensorflow:  precision_avg = 0.9794
-INFO:tensorflow:  recall_avg = 0.9780
-INFO:tensorflow:  f1_avg = 0.9783
-INFO:tensorflow:  error_avg = 0.0213
-```
-And the word segmentation results will be seen in ./output/result_cut/seg_result.txt
-
-If you want learn more details, see the code analysis(in Chinese)[简书:BERT系列（五）——中文分词实践...](https://www.jianshu.com/p/be0a951445f4)
